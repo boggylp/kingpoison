@@ -7,20 +7,27 @@ const numberOfSlaves = 8;
 start(numberOfBarrels, numberOfDays, numberOfSlaves);
 
 function start(numberOfBarrels, numberOfDays, numberOfSlaves) {
-
-    const barrels = new Array(numberOfBarrels).fill({ isInfected: false, id: faker.datatype.uuid() });
-    console.log(barrels);
-    const slaves = new Array(numberOfSlaves).fill(faker.name.findName());
-    console.log(slaves);
-    // infected barrel
+    const barrels = [...new Array(numberOfBarrels)].map(() => createBarrel());
+    const slaves = [...new Array(numberOfSlaves)].map(() => createSlave());
     const infectedBarrel = poisonBarrel(barrels);
+    console.log(slaves);
     console.log(infectedBarrel);
+
+
+
 };
 
-function poisonBarrel(barrels) {
+function createBarrel() {
+    return { isInfected: false, id: faker.datatype.uuid() };
+}
 
+function createSlave() {
+    return faker.name.findName();
+}
+
+function poisonBarrel(barrels) {
     infectedBarrelIndex = getRandomInt(0, barrels.length)
-    barrels[infectedBarrelIndex] = true;
+    barrels[infectedBarrelIndex].isInfected = true;
     return barrels[infectedBarrelIndex];
 }
 
@@ -29,4 +36,3 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
-

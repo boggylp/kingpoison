@@ -1,0 +1,26 @@
+{
+  "name": "kingpoison",
+  "version": "0.0.1",
+  "description": "King poison game solution",
+  "main": "app.js",
+  "scripts": {
+    "test": "node src/app.js",
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boggylp/kingpoison.git"
+  },
+  "keywords": [
+    "kingpoison"
+  ],
+  "author": "Goran Bogovac",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boggylp/kingpoison/issues"
+  },
+  "homepage": "https://github.com/boggylp/kingpoison#readme",
+  "dependencies": {
+    "faker": "^5.5.3"
+  }
+}
