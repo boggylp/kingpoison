@@ -13,8 +13,6 @@ function start(numberOfBarrels, numberOfDays, numberOfSlaves) {
     console.log(slaves);
     console.log(infectedBarrel);
 
-
-
 };
 
 function createBarrel() {
