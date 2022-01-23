@@ -16,6 +16,8 @@ function start(numberOfBarrels, numberOfDays, numberOfSlaves) {
     saveTheKing(barrels, slaves, numberOfDays);
 };
 
+// Key outline: for each slave dead and alive combination you can note one barrel
+// meaning (2^n)-1 barrels can be determined where n is number of slaves
 function saveTheKing(barrels, slaves, numberOfDays) {
 
     const untastedBarrels = [...barrels];
