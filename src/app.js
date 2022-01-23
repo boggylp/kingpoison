@@ -9,9 +9,9 @@ start(numberOfBarrels, numberOfDays, numberOfSlaves);
 function start(numberOfBarrels, numberOfDays, numberOfSlaves) {
     const barrels = [...new Array(numberOfBarrels)].map(() => createBarrel());
     const slaves = [...new Array(numberOfSlaves)].map(() => createSlave());
-    const infectedBarrel = poisonBarrel(barrels);
+    const infectedBarrel = poisonRandomBarrel(barrels);
     console.log("Starting slaves: ", slaves);
-    console.log(infectedBarrel);
+    console.log("Infected barrel: ", infectedBarrel);
 
     saveTheKing(barrels, slaves, numberOfDays);
 };
@@ -53,7 +53,7 @@ function createSlave() {
     return { name: faker.name.findName(), isAlive: true, tastedBarrels: [] };
 }
 
-function poisonBarrel(barrels) {
+function poisonRandomBarrel(barrels) {
     infectedBarrelIndex = getRandomInt(0, barrels.length)
     barrels[infectedBarrelIndex].isPoisoned = true;
     return barrels[infectedBarrelIndex];
