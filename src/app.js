@@ -18,22 +18,16 @@ function start(numberOfBarrels, numberOfDays, numberOfSlaves) {
 
 function saveTheKing(barrels, slaves, numberOfDays) {
 
-    let splitFactor = 2;
+    const untastedBarrels = [...barrels];
+
     for (let i = 0; i < slaves.length; i++) {
-        // taste barrels
-        const splitLength = Math.floor(barrels.length / splitFactor);
-        for (let j = 0; j < barrels.length; j += splitLength) {
-            if (i >= slaves.length) break;
-
-            slaves[i].barrels = barrels.slice(j, splitLength);
-            i++;
-        }
-
-        splitFactor *= 2;
+        sacrificeSlave(slaves[i], untastedBarrels);
+        i++;
     }
 
-    const deadSlaves = slaves.filter(s => s.barrels.find(b => b.isPoisoned));
-    deadSlaves.foreach(slave => slave.isAlive = false);
+    console.log(slaves);
+    const deadSlaves = slaves.filter(s => s.tastedBarrels.find(b => b.isPoisoned));
+    deadSlaves.forEach(slave => slave.isAlive = false);
 
     console.log("Remaining slaves: ", slaves.filter(s => s.isAlive));
     console.log("RIP slaves: ", deadSlaves);
@@ -42,6 +36,14 @@ function saveTheKing(barrels, slaves, numberOfDays) {
         console.log("The king is dead. Long live the king!");
     } else {
         console.log("The king survived!");
+    }
+}
+
+function sacrificeSlave(slave, barrels) {
+    // taste barrels
+    const splitLength = Math.floor(barrels.length / 2);
+    for (let j = 0; j < barrels.length; j += splitLength) {
+        slave.tastedBarrels = barrels.splice(j, splitLength);
     }
 }
 
