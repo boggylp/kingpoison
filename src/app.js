@@ -19,6 +19,10 @@ function start(numberOfBarrels, numberOfDays, numberOfSlaves) {
 // meaning (2^n)-1 barrels can be determined where n is number of slaves
 // another key thought: O(logn) slaves can be sacrificed
 function saveTheKing(barrels, slaves, numberOfDays) {
+    if (log(10, barrels.length) > slaves.length) {
+        console.log("Can't be solved mate!");
+        return;
+    }
 
     const poisonedBarrelIndex = poisonRandomBarrel(barrels);
     const poisonedBarrel = barrels[poisonedBarrelIndex];
